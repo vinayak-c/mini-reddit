@@ -1,8 +1,6 @@
 package com.vinayak.minireddit.security;
 
 import com.vinayak.minireddit.exceptions.SpringRedditException;
-
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.Authentication;
