@@ -45,6 +45,15 @@ public class JwtProvider {
                 .compact();
     }
 
+    public String generateTokenWithUserName(String username) {
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(Date.from(Instant.now()))
+                .signWith(getPrivateKey())
+                .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationInMillis)))
+                .compact();
+    }
+
     private PrivateKey getPrivateKey(){
         try{
             return  (PrivateKey)keyStore.getKey("minireddit","minisecret".toCharArray());
@@ -74,5 +83,9 @@ public class JwtProvider {
                 .getBody();
 
         return claims.getSubject();
+    }
+
+    public Long getJwtExpirationInMillis() {
+        return jwtExpirationInMillis;
     }
 }
