@@ -44,4 +44,11 @@ public class Post {
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Subreddit subreddit;
 
+    public Integer getVoteCount() {
+        if (this.voteCount == null) {
+            return 0;
+        }
+        return this.voteCount;
+    }
+
 }
